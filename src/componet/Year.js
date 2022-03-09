@@ -1,15 +1,15 @@
-import React, { useState,useRef, useEffect  } from 'react';
+import React, { useState,useRef, useEffect  } from 'react'
 import { useSelector,useDispatch } from "react-redux";
-import axios from 'axios';
+import axios from 'axios'
 import {getDatas} from "../redux/actions/productsActions";
 
-const Filter = (setSearch) => {
+const Year = () => {
   const dispatch =  useDispatch();
     const inputRef = useRef(null);
     const data = useSelector((state) => state.allData.data);
     console.log(data)
 
-    const [roket,setRoket] = useState('');
+    const [year,setYear] = useState('');
     const [error,setError] = useState(true);
     const fetchDataDetail = async () => {
       const response = await axios
@@ -23,13 +23,13 @@ const Filter = (setSearch) => {
       fetchDataDetail();
     },[]);
     
-  const handleSubmitButton = () => {
-    setRoket(inputRef.current.value);
+  const handleSubmitYear = () => {
+    setYear(inputRef.current.value);
     setError(false)
   };
-  console.log(roket)
+  console.log(year)
   console.log(data)
-  const  value =data.filter(obj=> obj.rocket.rocket_name == roket);
+  const  value =data.filter(obj=> obj.launch_year == year);
   console.log("value",value)
   // useEffect(() =>{
   //   setSearch(true);
@@ -39,7 +39,7 @@ const Filter = (setSearch) => {
       <>
         <div className="form-control">
         <input type="text" placeholder='type_roket_name' ref={inputRef} />
-        <input type="submit" value="submit" onClick={handleSubmitButton} />
+        <input type="submit" value="submit" onClick={handleSubmitYear} />
       </div>
       <div className="py-5">
     <div className="container">
@@ -77,4 +77,4 @@ const Filter = (setSearch) => {
   )
 }
 
-export default Filter;
+export default Year;

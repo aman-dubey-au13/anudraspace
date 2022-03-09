@@ -46,9 +46,17 @@ const Home = () => {
 let ListTemplate;
     ListTemplate = 
     <>
-    <Link className="btn btn-dark" to="/dashboard">
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <Link to="/dashboard"><button type="button" class="btn btn-outline-primary ml-2">search_by_roketName</button></Link>
+      <Link  to="/year"><button type="button" class="btn btn-outline-primary ml-2">search_by_Year</button></Link>
+      <Link to="/status"> <button type="button" class="btn btn-outline-primary ml-2">search_by_status</button></Link>
+      </div>
+    {/* <Link className="btn btn-dark" to="/dashboard">
         search_by_roketName
       </Link>
+      <Link className="btn btn-dark" to="/dashboard">
+        search_by_Year
+      </Link> */}
     <div className="py-5">
     <div className="container">
       <div className="row hidden-md-up">
@@ -58,10 +66,20 @@ let ListTemplate;
             <div className="card-block">
             <img className="card-img-top" src={data.links.mission_patch}  alt="..loading"/>
               <h4 className="card-title">{data.mission_name}</h4>
+              <div>
+              rocket_name
               <h6 className="card-subtitle text-muted">{data.rocket.rocket_name}</h6>
+              </div>
               <p className="card-text p-y-1">{data.details}</p>
+              <div>
+              launch_year
               <h6>{data.launch_year}</h6>
+              </div>
               <h6>{data.launch_date_utc}</h6>
+              <div>
+              launch_success
+              <h6>{JSON.stringify(data.launch_success)}</h6>
+              </div>
               <a href="#" className="card-link">link</a>
               <a href="#" className="card-link">Second link</a>
             </div>
