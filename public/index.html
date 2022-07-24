@@ -42,3 +42,90 @@
     -->
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+		
+        <input></input>
+		<input type="button"
+			value="Noun"
+			onmousedown="getNoun()">
+        <input type="button"
+			value="pronoun"
+			onmousedown="getPronoun()">
+        <!-- <input type="button"
+			value="Get Selection"
+			onmousedown="getSelectedText()"> -->
+
+
+            <form name="testform">
+                <textarea name="selectedtext"
+                style="color:red"
+                        rows="5"
+                        cols="20">
+                        <ul id="noun-box" rows="5" cols="20">
+                        </ul>
+                    </textarea>
+                <textarea name="nounText" style="color:blue"rows="5"
+                        cols="20">
+                        <ul id="pronoun-box" rows="5" cols="20">
+                        </ul>
+                    </textarea>
+            </form>
+		<!-- <form >
+			<ul id="noun-box" rows="5" cols="20">
+            </ul>
+		</form>
+        <form>
+			<ul id="pronoun-box" rows="5" cols="20">
+            </ul>
+		</form> -->
+	</center>
+    <script>
+        function getNoun() {
+        const toDoBox = document.querySelector('#noun-box')
+        const listItem = document.createElement('li')
+        var selectedText = '';
+        if (window.getSelection) {
+            selectedText = window.getSelection();
+            console.log("selectedText",selectedText)
+            listItem.innerHTML = `${selectedText}`
+            console.log(listItem)
+            toDoBox.appendChild(listItem)
+        }
+    }
+
+    function getPronoun() {
+        const toDoBox = document.querySelector('#pronoun-box')
+        const listItem = document.createElement('li')
+        var selectedText = '';
+        if (window.getSelection) {
+            selectedText = window.getSelection();
+            console.log("selectedText",selectedText)
+            listItem.innerHTML = `${selectedText}`
+            console.log(listItem)
+            toDoBox.appendChild(listItem)
+        }
+    }
+		</script>
+    <!-- <script src="script.js"  ></script> -->
+</body>
+
+</html>
