@@ -78,3 +78,80 @@ const Filter = (setSearch) => {
 }
 
 export default Filter;
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const Athlete = () => {
+  const [repo, setRepo] = useState([]);
+  // const getRepo = async () => {
+  //   await axios.get("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  //     .then((response) => {
+  //       console.log("response", response);
+  //       const myRepo = response.data;
+  //       console.log("data", myRepo);
+  //       setRepo(myRepo);
+  //     });
+  // };
+
+  useEffect(() => {
+    const getRepo = async () => {
+      try {
+        const response = await axios.get(
+          "https://www.ag-grid.com/example-assets/olympic-winners.json"
+        );
+        console.log(response);
+        const myRepo = response.data;
+        console.log("data", myRepo);
+        setRepo(myRepo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRepo();
+  }, []);
+
+  return (
+    <div>
+      {/* //{repo.map((i) => (
+        <div> */}
+      <table>
+        <tr>
+          <th>athlete</th>
+          <th>age</th>
+          <th>country</th>
+          <th>year</th>
+          <th>date</th>
+          <th>sport</th>
+          <th>gold</th>
+          <th>silver</th>
+          <th>bronze</th>
+          <th>total</th>
+        </tr>
+        {repo.map((i) => (
+          //<div>
+          <tr>
+            <td>{i.athlete}</td>
+            <td>{i.age}</td>
+            <td>{i.country}</td>
+            <td>{i.year}</td>
+            <td>{i.date}</td>
+            <td>{i.sport}</td>
+            <td>{i.gold}</td>
+            <td>{i.silver}</td>
+            <td>{i.bronze}</td>
+            <td>{i.total}</td>
+          </tr>
+          //</div>
+        ))}
+      </table>
+      {/* //</div> */}
+    </div>
+  );
+};
+
+export default Athlete;
